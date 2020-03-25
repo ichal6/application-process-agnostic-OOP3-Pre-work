@@ -1,0 +1,5 @@
+#IDE files
+.idea
+stale_outputs_checked
+# class file
+*.class
