@@ -1,5 +1,6 @@
 package com.Lechowicz.apps.interactions;
 
-public class View {
+public abstract class View {
+    public abstract void print(String toDisplay);
 
 }
