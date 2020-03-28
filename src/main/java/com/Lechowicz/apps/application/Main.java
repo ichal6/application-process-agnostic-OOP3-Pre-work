@@ -1,7 +1,13 @@
 package com.Lechowicz.apps.application;
 
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args){
-        new Controller();
+        try {
+            new Controller();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

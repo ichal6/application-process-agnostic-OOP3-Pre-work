@@ -4,6 +4,7 @@ import com.Lechowicz.apps.interactions.*;
 import com.Lechowicz.apps.logic.Model;
 import com.Lechowicz.apps.persons.Person;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Controller {
@@ -14,7 +15,7 @@ public class Controller {
 
     private String[] questions;
 
-    public Controller(){
+    public Controller() throws IOException {
         input = new TerminalInput();
         view = new TerminalView();
         model = new Model();
