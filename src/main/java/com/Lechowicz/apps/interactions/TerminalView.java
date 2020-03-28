@@ -11,7 +11,7 @@ public class TerminalView extends View {
     }
 
     @Override
-    public void print(List<Person> listOfPerson) {
+    public void printFullName(List<Person> listOfPerson) {
         for(Person person: listOfPerson){
             System.out.println(person.getFullName());
         }

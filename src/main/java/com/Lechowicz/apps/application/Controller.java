@@ -59,7 +59,7 @@ public class Controller {
     private void answerOne(){
         view.print(questions[0]);
         List<Person> mentors = model.getAllMentors();
-        view.print(mentors);
+        view.printFullName(mentors);
     }
 
     private void answerTwo(){
