@@ -9,7 +9,7 @@ public class DAOsql implements InterfaceDAO {
     private List<Person> mentors;
     private List<Person> candidates;
 
-    DAOsql(){
+    public DAOsql(){
 
     }
 

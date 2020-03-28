@@ -1,19 +1,27 @@
 package com.Lechowicz.apps.logic;
 
+import com.Lechowicz.apps.DAO.DAOsql;
+import com.Lechowicz.apps.DAO.InterfaceDAO;
 import com.Lechowicz.apps.persons.Person;
 
 import java.util.List;
 
 public class Model {
-    public List<Person> getAllMentors() {
-        return null;
+    InterfaceDAO daoDB;
+
+    public Model(){
+        daoDB = new DAOsql();
     }
 
-    public List<Person> getMentorsByCity(String city){
-        return null;
+    public List<Person> getAllMentors() {
+        return daoDB.getMentors();
     }
 
     public List<Person>  getAllAplications(){
+        return daoDB.getCandidates();
+    }
+
+    public List<Person> getMentorsByCity(String city){
         return null;
     }
 
