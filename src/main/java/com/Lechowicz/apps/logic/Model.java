@@ -17,15 +17,15 @@ public class Model {
         return null;
     }
 
-    public void addNewAplication(){
+    public void addNewAplication(Person newPerson){
 
     }
 
-    public void updateAplication(){
+    public void updateAplication(String fullName, Person updatePerson){
 
     }
 
-    public void deleteAplication(){
+    public void deleteAplication(String emailPattern){
 
     }
 }
