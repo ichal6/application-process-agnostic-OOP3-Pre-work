@@ -5,8 +5,9 @@ public class Candidate extends Person {
 
     public Candidate(String[] infoAboutPerson) {
         super(infoAboutPerson);
-
-        this.applicationCode = Integer.parseInt(infoAboutPerson[6]);
+        this.phoneNumber = infoAboutPerson[3];
+        this.email = infoAboutPerson[4];
+        this.applicationCode = Integer.parseInt(infoAboutPerson[5]);
     }
 
     public Integer getApplicationCode() {

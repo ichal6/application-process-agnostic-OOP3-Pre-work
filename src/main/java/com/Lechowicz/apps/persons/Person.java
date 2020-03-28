@@ -11,8 +11,6 @@ public abstract class Person {
         this.id = Integer.parseInt(infoAboutPerson[0]);
         this.firstName = infoAboutPerson[1];
         this.lastName = infoAboutPerson[2];
-        this.phoneNumber = infoAboutPerson[3];
-        this.email = infoAboutPerson[4];
     }
 
     public String getFullName(){
