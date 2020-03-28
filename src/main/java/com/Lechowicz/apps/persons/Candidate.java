@@ -1,7 +1,7 @@
 package com.Lechowicz.apps.persons;
 
 public class Candidate extends Person {
-    protected Integer applicationCode;
+    private Integer applicationCode;
 
     public Candidate(String[] infoAboutPerson) {
         super(infoAboutPerson);
