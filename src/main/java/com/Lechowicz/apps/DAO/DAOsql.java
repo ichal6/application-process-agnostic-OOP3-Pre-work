@@ -14,8 +14,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class DAOsql implements InterfaceDAO {
     private List<Person> mentors;
@@ -148,11 +147,20 @@ public class DAOsql implements InterfaceDAO {
         else{
             searchList = candidates;
         }
-        for(Person singlePerson: searchList){
-            if(fullName.equals(singlePerson.getFullName())){
-                searchList.remove(singlePerson);
+        for(int index = 0; index < searchList.size(); index++){
+            if(fullName.equals(searchList.get(index).getFullName())){
+                searchList.remove(searchList.get(index));
                 searchList.add(person);
+                break;
             }
+        }
+
+        try {
+            updateDataBase();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -166,6 +174,14 @@ public class DAOsql implements InterfaceDAO {
             searchList = candidates;
         }
         searchList.removeIf(singlePerson -> person == singlePerson);
+
+        try {
+            updateDataBase();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
