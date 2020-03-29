@@ -27,6 +27,9 @@ public class DAOsql implements InterfaceDAO {
     private String url;
     private String user;
     private String password;
+    private String[] params = new String[8];
+    private Integer lengthOfCandidate = 6;
+    private Integer lengthOfMentors = 8;
 
     public DAOsql() throws IOException{
         Properties prop = readProperties("src/main/resources/database.properties");
@@ -50,33 +53,35 @@ public class DAOsql implements InterfaceDAO {
         return props;
     }
 
+    private void fillLists(Connection con) throws SQLException {
+        PreparedStatement pst = con.prepareStatement("SELECT * FROM applicants");
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            for(int index = 0; index < lengthOfCandidate;index++){
+                params[index] = rs.getString(index + 1);
+            }
+            candidates.add(new Candidate(params));
+        }
+
+        pst = con.prepareStatement("SELECT * FROM mentors");
+        rs = pst.executeQuery();
+
+        while (rs.next()) {
+            for(int index = 0; index < lengthOfMentors;){
+                params[index] = rs.getString(index + 1);
+                index++;
+            }
+            mentors.add(new Mentor(params));
+        }
+    }
+
     private void openDB() {
-        String[] params = new String[8];
-        int lengthOfCandidate = 6;
-        int lengthOfMentors = 8;
+
         try {
 
             Connection con = DriverManager.getConnection(url, user, password);
-            PreparedStatement pst = con.prepareStatement("SELECT * FROM applicants");
-            ResultSet rs = pst.executeQuery();
-
-            while (rs.next()) {
-                for(int index = 0; index < lengthOfCandidate;index++){
-                    params[index] = rs.getString(index + 1);
-                }
-                candidates.add(new Candidate(params));
-            }
-
-            pst = con.prepareStatement("SELECT * FROM mentors");
-            rs = pst.executeQuery();
-
-            while (rs.next()) {
-                for(int index = 0; index < lengthOfMentors;){
-                    params[index] = rs.getString(index + 1);
-                    index++;
-                }
-                mentors.add(new Mentor(params));
-            }
+            fillLists(con);
 
         } catch (SQLException ex) {
 
