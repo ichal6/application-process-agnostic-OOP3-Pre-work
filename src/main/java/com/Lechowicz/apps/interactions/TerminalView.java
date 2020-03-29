@@ -35,7 +35,7 @@ public class TerminalView extends View {
 
     @Override
     public void print(Candidate newCandidate) {
-        System.out.println(newCandidate.getFullName());
+        System.out.println(newCandidate.getFullName() + " " + newCandidate.getPhoneNumber());
     }
 
 }

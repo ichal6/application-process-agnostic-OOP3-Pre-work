@@ -56,10 +56,14 @@ public class Model {
     }
 
     public void updateAplication(String fullName, Person updatePerson){
-
+        daoDB.updatePerson(fullName, updatePerson);
     }
 
     public void deleteAplication(String emailPattern){
 
+    }
+
+    public Candidate getCandidate(String fullName) {
+        return daoDB.getCandidateByFullName(fullName);
     }
 }

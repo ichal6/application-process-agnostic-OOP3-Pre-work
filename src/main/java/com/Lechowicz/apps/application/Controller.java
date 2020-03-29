@@ -92,7 +92,12 @@ public class Controller {
     }
 
     private void answerSix(){
-        view.print("Write a query that update application.\n");
+        String fullName = "Jemima Foreman";
+        view.print(questions[5]);
+        Candidate application = model.getCandidate(fullName);
+        application.setPhoneNumber("003670/223-7459");
+        model.updateAplication(fullName, application);
+        view.print(model.getCandidate(fullName));
     }
 
     private void answerSeven(){
