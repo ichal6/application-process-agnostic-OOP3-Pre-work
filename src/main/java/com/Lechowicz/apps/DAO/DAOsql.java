@@ -31,7 +31,7 @@ public class DAOsql implements InterfaceDAO {
     private Integer lengthOfCandidate = 6;
     private Integer lengthOfMentors = 8;
 
-    public DAOsql() throws IOException{
+    public DAOsql() throws IOException, SQLException{
         Properties prop = readProperties("src/main/resources/database.properties");
         url = prop.getProperty("db.url");
         user = prop.getProperty("db.user");
@@ -52,6 +52,7 @@ public class DAOsql implements InterfaceDAO {
 
         return props;
     }
+
 
     private void fillLists(Connection con) throws SQLException {
         PreparedStatement pst = con.prepareStatement("SELECT * FROM applicants");
@@ -76,17 +77,9 @@ public class DAOsql implements InterfaceDAO {
         }
     }
 
-    private void openDB() {
-
-        try {
-
-            Connection con = DriverManager.getConnection(url, user, password);
-            fillLists(con);
-
-        } catch (SQLException ex) {
-
-            System.out.println("Error in Database" + ex);
-        }
+    private void openDB() throws SQLException{
+        Connection con = DriverManager.getConnection(url, user, password);
+        fillLists(con);
     }
 
     @Override
