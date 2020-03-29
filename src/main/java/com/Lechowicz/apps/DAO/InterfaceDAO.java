@@ -14,7 +14,7 @@ public interface InterfaceDAO {
 
     public void updatePerson(String fullName, Person person);
 
-    public void deletePerson(String fullName);
+    public void deletePerson(Person person);
 
     public void addPerson(String[] personData, Boolean isMentor);
 

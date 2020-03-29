@@ -101,7 +101,10 @@ public class Controller {
     }
 
     private void answerSeven(){
-        view.print("Write a query that delete applications from database.");
+        view.print(questions[6]);
+        List<Person> candidates = model.getCandidateByEmailPattern("@mauriseu.net");
+        model.deleteAplication(candidates);
+        view.printFullName(model.getAllAplications());
     }
 
 

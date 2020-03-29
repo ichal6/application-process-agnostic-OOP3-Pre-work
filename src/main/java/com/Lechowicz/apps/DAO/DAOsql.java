@@ -110,8 +110,15 @@ public class DAOsql implements InterfaceDAO {
     }
 
     @Override
-    public void deletePerson(String fullName) {
-
+    public void deletePerson(Person person) {
+        List<Person> searchList;
+        if(person instanceof Mentor){
+            searchList = mentors;
+        }
+        else{
+            searchList = candidates;
+        }
+        searchList.removeIf(singlePerson -> person == singlePerson);
     }
 
     @Override

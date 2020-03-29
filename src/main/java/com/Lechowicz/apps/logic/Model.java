@@ -59,8 +59,10 @@ public class Model {
         daoDB.updatePerson(fullName, updatePerson);
     }
 
-    public void deleteAplication(String emailPattern){
-
+    public void deleteAplication(List<Person> candidatesToRemove){
+        for(Person candidate: candidatesToRemove){
+            daoDB.deletePerson(candidate);
+        }
     }
 
     public Candidate getCandidate(String fullName) {
