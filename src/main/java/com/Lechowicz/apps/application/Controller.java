@@ -71,7 +71,9 @@ public class Controller {
     }
 
     private void answerThree(){
-        view.print("Write a query that returns the full name and phone number of all applications.\n");
+        view.print(questions[2]);
+        List<Person> candidates = model.getAllAplications();
+        view.printFullNameAndPhone(candidates);
     }
 
     private void answerFour(){

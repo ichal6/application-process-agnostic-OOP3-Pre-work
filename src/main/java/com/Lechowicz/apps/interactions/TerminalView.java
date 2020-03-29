@@ -25,4 +25,11 @@ public class TerminalView extends View {
         }
     }
 
+    @Override
+    public void printFullNameAndPhone(List<Person> persons) {
+        for(Person person: persons){
+            System.out.println(person.getFullName() + " " + person.getPhoneNumber());
+        }
+    }
+
 }
