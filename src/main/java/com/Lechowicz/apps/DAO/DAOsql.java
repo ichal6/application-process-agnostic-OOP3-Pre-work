@@ -5,10 +5,7 @@ import com.Lechowicz.apps.persons.Mentor;
 import com.Lechowicz.apps.persons.Person;
 import org.apache.ibatis.jdbc.ScriptRunner;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -53,6 +50,55 @@ public class DAOsql implements InterfaceDAO {
         return props;
     }
 
+    private void updateDataBase() throws SQLException, FileNotFoundException {
+        Connection con = DriverManager.getConnection(url, user, password);
+        ScriptRunner sr = new ScriptRunner(con);
+
+
+        Reader reader = new BufferedReader(new FileReader("src/main/resources/clear_tables.sql"));
+
+        sr.runScript(reader);
+        con.close();
+
+        con = DriverManager.getConnection(url, user, password);
+
+        for(Person person: candidates){
+            Candidate can = (Candidate) person;
+            String query = "INSERT INTO applicants(id, first_name,last_name, phone_number, email, application_code) VALUES(?, ?, ?, ?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setInt(1, can.getId());
+            pst.setString(2, can.getFirstName());
+            pst.setString(3, can.getLastName());
+            pst.setString(4, can.getPhoneNumber());
+            pst.setString(5, can.getEmail());
+            pst.setInt(6, can.getApplicationCode());
+
+            pst.executeUpdate();
+        }
+        con.close();
+
+        con = DriverManager.getConnection(url, user, password);
+
+        for(Person person: mentors){
+            Mentor men = (Mentor) person;
+            String query = "INSERT INTO mentors(id, first_name,last_name, nick_name, phone_number, email, city, favourite_number) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setInt(1, men.getId());
+            pst.setString(2, men.getFirstName());
+            pst.setString(3, men.getLastName());
+            pst.setString(4, men.getNickName());
+            pst.setString(5, men.getPhoneNumber());
+            pst.setString(6, men.getEmail());
+            pst.setString(7, men.getCity());
+            if(men.getFavouriteNumber() != null){
+                pst.setInt(8, men.getFavouriteNumber());
+            }else{
+                pst.setNull(8, java.sql.Types.NULL);
+            }
+            pst.executeUpdate();
+        }
+        con.close();
+    }
 
     private void fillLists(Connection con) throws SQLException {
         PreparedStatement pst = con.prepareStatement("SELECT * FROM applicants");
@@ -75,6 +121,7 @@ public class DAOsql implements InterfaceDAO {
             }
             mentors.add(new Mentor(params));
         }
+        con.close();
     }
 
     private void openDB() throws SQLException{
@@ -129,6 +176,14 @@ public class DAOsql implements InterfaceDAO {
         }
         else{
             candidates.add(new Candidate(personData));
+        }
+
+        try {
+            updateDataBase();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
