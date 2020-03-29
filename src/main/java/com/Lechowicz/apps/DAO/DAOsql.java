@@ -94,19 +94,19 @@ public class DAOsql implements InterfaceDAO {
 
     @Override
     public void updatePerson(String fullName, Person person) {
-        List<Person> searchList;
-        if(person instanceof Mentor){
-          searchList = mentors;
-        }
-        else{
-            searchList = candidates;
-        }
-        for(Person singlePerson: searchList){
-            if(fullName.equals(singlePerson.getFullName())){
-                searchList.remove(singlePerson);
-                searchList.add(person);
-            }
-        }
+//        List<Person> searchList;
+//        if(person instanceof Mentor){
+//          searchList = mentors;
+//        }
+//        else{
+//            searchList = candidates;
+//        }
+//        for(Person singlePerson: searchList){
+//            if(fullName.equals(singlePerson.getFullName())){
+//                searchList.remove(singlePerson);
+//                searchList.add(person);
+//            }
+//        }
     }
 
     @Override

@@ -5,6 +5,10 @@ public class Mentor extends Person {
     private Integer favouriteNumber;
     private String nickName;
 
+    public String getNickName() {
+        return nickName;
+    }
+
     public Mentor(String[] infoAboutPerson) {
         super(infoAboutPerson);
         this.nickName = infoAboutPerson[3];

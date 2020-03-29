@@ -2,6 +2,7 @@ package com.Lechowicz.apps.application;
 
 import com.Lechowicz.apps.interactions.*;
 import com.Lechowicz.apps.logic.Model;
+import com.Lechowicz.apps.persons.Mentor;
 import com.Lechowicz.apps.persons.Person;
 
 import java.io.IOException;
@@ -64,7 +65,9 @@ public class Controller {
     }
 
     private void answerTwo(){
-        view.print("Write a query that returns the nick_name-s of all mentors working at Miskolc.\n");
+        view.print(questions[1]);
+        List<Mentor> mentors =  model.getMentorsByCity("Miskolc");
+        view.printNickName(mentors);
     }
 
     private void answerThree(){
