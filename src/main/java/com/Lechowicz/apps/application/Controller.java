@@ -2,6 +2,7 @@ package com.Lechowicz.apps.application;
 
 import com.Lechowicz.apps.interactions.*;
 import com.Lechowicz.apps.logic.Model;
+import com.Lechowicz.apps.persons.Candidate;
 import com.Lechowicz.apps.persons.Mentor;
 import com.Lechowicz.apps.persons.Person;
 
@@ -83,7 +84,11 @@ public class Controller {
     }
 
     private void answerFive(){
-        view.print("Write a query that insert new application and return this person.\n");
+        view.print(questions[4]);
+        String[] newPersonData = {"11" , "Markus", "Schaffarzyk", "003620/725-2666", "djnovus@groovecoverage.com", "54823"};
+        model.addNewAplication(newPersonData);
+        Candidate newCandidate = model.getCandidate(54823);
+        view.print(newCandidate);
     }
 
     private void answerSix(){

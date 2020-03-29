@@ -47,8 +47,12 @@ public class Model {
         return candidates;
     }
 
-    public void addNewAplication(Person newPerson){
+    public void addNewAplication(String[] personData){
+        daoDB.addPerson(personData, false);
+    }
 
+    public Candidate getCandidate(Integer appCode){
+        return daoDB.getCandidateByCode(appCode);
     }
 
     public void updateAplication(String fullName, Person updatePerson){

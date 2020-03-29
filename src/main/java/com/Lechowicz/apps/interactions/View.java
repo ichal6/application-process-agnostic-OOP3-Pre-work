@@ -14,4 +14,6 @@ public abstract class View {
     public abstract void printNickName(List<Mentor> mentors);
 
     public abstract void printFullNameAndPhone(List<Person> persons);
+
+    public abstract void print(Candidate newCandidate);
 }

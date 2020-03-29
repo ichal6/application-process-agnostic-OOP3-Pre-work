@@ -16,5 +16,7 @@ public interface InterfaceDAO {
 
     public void deletePerson(String fullName);
 
-    public void addPerson(String fullName);
+    public void addPerson(String[] personData, Boolean isMentor);
+
+    public Candidate getCandidateByCode(Integer appCode);
 }

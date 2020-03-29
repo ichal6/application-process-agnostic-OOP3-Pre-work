@@ -1,5 +1,6 @@
 package com.Lechowicz.apps.interactions;
 
+import com.Lechowicz.apps.persons.Candidate;
 import com.Lechowicz.apps.persons.Mentor;
 import com.Lechowicz.apps.persons.Person;
 
@@ -30,6 +31,11 @@ public class TerminalView extends View {
         for(Person person: persons){
             System.out.println(person.getFullName() + " " + person.getPhoneNumber());
         }
+    }
+
+    @Override
+    public void print(Candidate newCandidate) {
+        System.out.println(newCandidate.getFullName());
     }
 
 }
