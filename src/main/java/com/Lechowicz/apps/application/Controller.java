@@ -77,7 +77,9 @@ public class Controller {
     }
 
     private void answerFour(){
-        view.print("Write a query that returns the full name, phone number and with special e-mail of all applications.\n");
+        view.print(questions[3]);
+        List<Person> candidates = model.getCandidateByEmailPattern("@adipiscingenimmi.edu");
+        view.printFullNameAndPhone(candidates);
     }
 
     private void answerFive(){

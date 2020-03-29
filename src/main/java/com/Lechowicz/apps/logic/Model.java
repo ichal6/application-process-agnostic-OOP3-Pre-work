@@ -28,7 +28,6 @@ public class Model {
 
     public List<Mentor> getMentorsByCity(String city){
         List<Mentor> mentors = new ArrayList<>();
-        this.getAllMentors();
         for(Person person: this.getAllMentors()){
             Mentor mentor = (Mentor) person;
             if(mentor.getCity().equals(city)){
@@ -36,6 +35,16 @@ public class Model {
             }
         }
         return mentors;
+    }
+
+    public List<Person> getCandidateByEmailPattern(String pattern){
+        List<Person> candidates = new ArrayList<>();
+        for(Person person: this.getAllAplications()){
+            if(person.getEmail().contains(pattern)){
+                candidates.add(person);
+            }
+        }
+        return candidates;
     }
 
     public void addNewAplication(Person newPerson){
