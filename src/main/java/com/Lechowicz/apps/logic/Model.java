@@ -5,12 +5,13 @@ import com.Lechowicz.apps.DAO.InterfaceDAO;
 import com.Lechowicz.apps.persons.Person;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Model {
     InterfaceDAO daoDB;
 
-    public Model() throws IOException {
+    public Model() throws IOException, SQLException {
         daoDB = new DAOsql();
     }
 

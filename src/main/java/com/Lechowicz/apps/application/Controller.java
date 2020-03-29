@@ -5,6 +5,7 @@ import com.Lechowicz.apps.logic.Model;
 import com.Lechowicz.apps.persons.Person;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Controller {
@@ -15,7 +16,7 @@ public class Controller {
 
     private String[] questions;
 
-    public Controller() throws IOException {
+    public Controller() throws IOException, SQLException {
         input = new TerminalInput();
         view = new TerminalView();
         model = new Model();
