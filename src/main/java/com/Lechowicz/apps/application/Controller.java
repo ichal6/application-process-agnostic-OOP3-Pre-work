@@ -92,11 +92,49 @@ public class Controller {
 
     private void searchByNickName(){
         view.print("Please insert nick name\n");
-        String fullName = input.getStringFromUser();
-        Mentor foundPerson = model.getMentorByNick(fullName);
+        String nick = input.getStringFromUser();
+        Mentor foundPerson = model.getMentorByNick(nick);
         if(foundPerson != null) {
             view.print(foundPerson);
         }
+    }
+
+    private void searchByPhoneNumber() {
+        view.print("Please insert phone number\n");
+        String phone = input.getStringFromUser();
+        Person foundPerson = model.getMentorByPhone(phone);
+        if(foundPerson != null){
+            view.print((Mentor)foundPerson);
+        }
+        else{
+            foundPerson = model.getCandidateByPhone(phone);
+            view.print((Candidate)foundPerson);
+        }
+    }
+
+    private void searchByMail() {
+        view.print("Please insert e-mail\n");
+        String mail = input.getStringFromUser();
+        Person foundPerson = model.getMentorByEmail(mail);
+        if(foundPerson != null){
+            view.print((Mentor)foundPerson);
+        }
+        else{
+            foundPerson = model.getCandidateByEmail(mail);
+            view.print((Candidate)foundPerson);
+        }
+    }
+
+    private void searchByFavNum() {
+
+    }
+
+    private void searchByAppCode() {
+
+    }
+
+    private void searchByCity() {
+
     }
 
     private void searchTables() {
@@ -112,14 +150,26 @@ public class Controller {
                 break;
             case 3:
                 searchByPhoneNumber();
+                break;
+            case 4:
+                searchByMail();
+                break;
+            case 5:
+                searchByCity();
+                break;
+            case 6:
+                searchByAppCode();
+                break;
+            case 7:
+                searchByFavNum();
+                break;
             default:
                 view.print("Insert wrong input!");
         }
     }
 
-    private void searchByPhoneNumber() {
 
-    }
+
 
     private Person searchPerson(Boolean isMentor){
         view.print("Please insert full name of search person: ");

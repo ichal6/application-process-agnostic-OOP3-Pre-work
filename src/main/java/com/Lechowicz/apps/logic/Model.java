@@ -86,4 +86,44 @@ public class Model {
         }
         return null;
     }
+
+    public Mentor getMentorByPhone(String phone){
+        List<Person> mentors = daoDB.getMentors();
+        for(Person person : mentors){
+            if(person.getPhoneNumber().equals(phone)){
+                return (Mentor) person;
+            }
+        }
+        return null;
+    }
+
+    public Candidate getCandidateByPhone(String phone){
+        List<Person> candidates = daoDB.getCandidates();
+        for(Person person : candidates){
+            if(person.getPhoneNumber().equals(phone)){
+                return (Candidate) person;
+            }
+        }
+        return null;
+    }
+
+    public Candidate getCandidateByEmail(String mail) {
+        List<Person> candidates = daoDB.getCandidates();
+        for(Person person : candidates){
+            if(person.getEmail().equals(mail)){
+                return (Candidate) person;
+            }
+        }
+        return null;
+    }
+
+    public Mentor getMentorByEmail(String mail) {
+        List<Person> mentors = daoDB.getMentors();
+        for(Person person : mentors){
+            if(person.getEmail().equals(mail)){
+                return (Mentor) person;
+            }
+        }
+        return null;
+    }
 }
