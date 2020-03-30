@@ -14,8 +14,10 @@ public class TerminalView extends View {
 
     @Override
     public void printFullName(List<Person> listOfPerson) {
+        System.out.println("first_name   |   last_name");
+        System.out.println("-------------+------------");
         for(Person person: listOfPerson){
-            System.out.println(person.getFullName());
+            System.out.println(String.format("%-11s  |  %s", person.getFirstName(), person.getLastName()));
         }
     }
 
