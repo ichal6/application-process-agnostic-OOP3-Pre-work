@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Controller {
     private Integer NUMBER_OF_QUESTIONS = 7;
-    private Integer NUMBER_OF_OPTIONS = 4;
+    private Integer NUMBER_OF_OPTIONS = 5;
     private View view;
     private InputManager input;
     private Model model;
@@ -87,6 +87,27 @@ public class Controller {
     }
 
     private void createMentor() {
+        String[] personData = new String[8];
+        view.print("Please insert id: ");
+        personData[0] = String.format("%s", input.getIntFromUser());
+        view.print("Please insert first name: ");
+        personData[1] = input.getStringFromUser();
+        view.print("Please insert last name: ");
+        personData[2] = input.getStringFromUser();
+        view.print("Please insert nick_name: ");
+        personData[3] = input.getStringFromUser();
+        view.print("Please insert phone number: ");
+        personData[4] = input.getStringFromUser();
+        view.print("Please insert email: ");
+        personData[5] = input.getStringFromUser();
+        view.print("Please insert city: ");
+        personData[6] = input.getStringFromUser();
+        view.print("Does (s)he the favourite number?[Y/N]");
+        if(input.getStringFromUser().toUpperCase().equals("Y")){
+            view.print("Please insert favourite_number: ");
+            personData[7] = String.format("%s", input.getIntFromUser());
+        }
+        model.addNewMentor(personData);
     }
 
     private void createApplication() {
