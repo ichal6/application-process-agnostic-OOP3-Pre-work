@@ -32,8 +32,10 @@ public class TerminalView extends View {
 
     @Override
     public void printFullNameAndPhone(List<Person> persons) {
+        System.out.println("full_name                | phone_number");
+        System.out.println("-------------------------+---------------------------");
         for(Person person: persons){
-            System.out.println(person.getFullName() + " " + person.getPhoneNumber());
+            System.out.println(String.format("%-23s  |  %s", person.getFullName(), person.getPhoneNumber()));
         }
     }
 
