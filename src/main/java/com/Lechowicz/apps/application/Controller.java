@@ -35,9 +35,32 @@ public class Controller {
     }
 
     private Boolean mainMenu(){
+        Integer switchMenu = chooseOptions();
+        if(switchMenu == 1){
+            return standardMenu();
+        }
+        else{
+            return null;
+        }
+    }
+
+    private Boolean standardMenu(){
         printQuestions();
         Integer numberOfAnswer = input.getIntFromUser();
         return answerSwitch(numberOfAnswer) > 0;
+    }
+
+    private Integer chooseOptions(){
+        view.print("Please choose submenu:\n");
+        view.print("1. Standard questions.\n");
+        view.print("2. User's questions\n");
+
+        Integer numberOfAnswer;
+        do {
+            numberOfAnswer = input.getIntFromUser();
+        }while(numberOfAnswer < 0 || numberOfAnswer > 3);
+
+        return numberOfAnswer;
     }
 
     private void fillQuestions() {
