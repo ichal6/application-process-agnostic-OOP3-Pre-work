@@ -186,12 +186,19 @@ public class DAOsql implements InterfaceDAO {
 
     @Override
     public void addPerson(String[] personData, Boolean isMentor) {
+
         if(isMentor){
             mentors.add(new Mentor(personData));
-
         }
         else{
-            candidates.add(new Candidate(personData));
+            Candidate newCandidate = new Candidate(personData);
+            for(Person person: candidates){
+                Candidate singleCandidate = (Candidate) person;
+                if(newCandidate.getApplicationCode().equals((singleCandidate.getApplicationCode()))){
+                   return;
+                }
+            }
+            candidates.add(newCandidate);
         }
 
         try {
