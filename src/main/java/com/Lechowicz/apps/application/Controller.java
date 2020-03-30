@@ -60,15 +60,33 @@ public class Controller {
                 createApplication();
                 break;
             case 2:
+                createMentor();
                 break;
             case 3:
+                updateApplication();
                 break;
             case 4:
+                updateMentor();
+                break;
+            case 5:
+                searchTables();
                 break;
             default:
                 view.print("Wrong input! Please insert the number from 0 to 4.\n");
         }
         return numberOfOption;
+    }
+
+    private void searchTables() {
+    }
+
+    private void updateMentor() {
+    }
+
+    private void updateApplication() {
+    }
+
+    private void createMentor() {
     }
 
     private void createApplication() {
@@ -94,6 +112,7 @@ public class Controller {
         options[1] = "Add new mentor to database.\n";
         options[2] = "Update application.\n";
         options[3] = "Update mentor.\n";
+        options[4] = "Search phrase in database\n";
     }
 
     private void printOptions() {
