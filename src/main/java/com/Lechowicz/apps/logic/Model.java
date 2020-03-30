@@ -126,4 +126,15 @@ public class Model {
         }
         return null;
     }
+
+    public Mentor getMentorByFavNmb(Integer nmb) {
+        List<Person> mentors = daoDB.getMentors();
+        for(Person person : mentors){
+            Mentor mentor = (Mentor) person;
+            if(mentor.getFavouriteNumber().equals(nmb)){
+                return mentor;
+            }
+        }
+        return null;
+    }
 }

@@ -13,6 +13,8 @@ public abstract class View {
 
     public abstract void print(Mentor mentor);
 
+    public abstract void print(List<Mentor> mentors);
+
     public abstract void printFullName(List<Person> mentors);
 
     public abstract void printNickName(List<Mentor> mentors);

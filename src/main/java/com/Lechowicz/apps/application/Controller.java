@@ -126,15 +126,31 @@ public class Controller {
     }
 
     private void searchByFavNum() {
-
+        //something here is wrong!
+        view.print("Please insert favourite number: \n");
+        Integer number = input.getIntFromUser();
+        Mentor foundPerson = model.getMentorByFavNmb(number);
+        if(foundPerson != null) {
+            view.print(foundPerson);
+        }
     }
 
     private void searchByAppCode() {
-
+        view.print("Please insert appCode: \n");
+        String code = input.getStringFromUser();
+        Candidate foundCandidate = model.getCandidate(code);
+        if(foundCandidate != null) {
+            view.print(foundCandidate);
+        }
     }
 
     private void searchByCity() {
-
+        view.print("Please insert city\n");
+        String city = input.getStringFromUser();
+        List<Mentor> foundPersons = model.getMentorsByCity(city);
+        if(foundPersons != null) {
+            view.print(foundPersons);
+        }
     }
 
     private void searchTables() {
