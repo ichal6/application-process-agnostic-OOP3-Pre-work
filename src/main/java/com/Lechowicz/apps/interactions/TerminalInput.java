@@ -24,6 +24,6 @@ public class TerminalInput extends InputManager {
     @Override
     public String getStringFromUser() {
         Scanner scannerFromUser = new Scanner(System.in);
-        return scannerFromUser.next();
+        return scannerFromUser.nextLine();
     }
 }

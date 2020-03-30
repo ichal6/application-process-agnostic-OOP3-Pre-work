@@ -84,6 +84,27 @@ public class Controller {
     }
 
     private void updateApplication() {
+        view.print("Please insert full name of search person: ");
+        String fullName = input.getStringFromUser();
+        Candidate personToUpdate = model.getCandidate(fullName);
+        if( personToUpdate == null){
+            view.print("Wrong input back to main menu\n");
+            return;
+        }
+        view.print("Please choose options edit:\n");
+        view.print("1. edit phone number\n");
+        view.print("2. edit email\n");
+        if(input.getIntFromUser().equals(1)){
+            view.print("Please insert new phone number: ");
+            String phone = input.getStringFromUser();
+            personToUpdate.setPhoneNumber(phone);
+        }
+        else{
+            view.print("Please insert email: ");
+            String email = input.getStringFromUser();
+            personToUpdate.setEmail(email);
+        }
+        model.updateAplication(fullName, personToUpdate);
     }
 
     private void createMentor() {
