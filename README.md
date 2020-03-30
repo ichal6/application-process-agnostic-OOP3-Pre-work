@@ -10,4 +10,4 @@
 ## Additional requirements
 * ~~Save your queries to queries.sql file.~~
 * ~~Implement that application using MVC and DAO patterns.~~
-* If the question is to print out some table, please print it out in some readable way (e.g. different rows on separate lines, no unnecessary parenthesis around values etc.), but don't mess a lot with formatting.
+* ~~If the question is to print out some table, please print it out in some readable way (e.g. different rows on separate lines, no unnecessary parenthesis around values etc.), but don't mess a lot with formatting.~~
