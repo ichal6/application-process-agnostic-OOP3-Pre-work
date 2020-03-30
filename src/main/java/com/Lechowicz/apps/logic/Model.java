@@ -51,6 +51,10 @@ public class Model {
         daoDB.addPerson(personData, false);
     }
 
+    public void addNewMentor(String[] personData){
+        daoDB.addPerson(personData, true);
+    }
+
     public Candidate getCandidate(Integer appCode){
         return daoDB.getCandidateByCode(appCode);
     }
