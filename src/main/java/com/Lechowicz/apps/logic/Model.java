@@ -73,7 +73,17 @@ public class Model {
         return daoDB.getCandidateByFullName(fullName);
     }
 
-    public Person getMentor(String fullName) {
+    public Mentor getMentor(String fullName) {
         return daoDB.getMentorByFullName(fullName);
+    }
+
+    public Mentor getMentorByNick(String nickName){
+        List<Person> mentors = daoDB.getMentors();
+        for(Person person : mentors){
+            if(((Mentor) person).getNickName().equals(nickName)){
+                return (Mentor) person;
+            }
+        }
+        return null;
     }
 }

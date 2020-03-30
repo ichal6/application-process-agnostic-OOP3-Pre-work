@@ -29,5 +29,13 @@ public class Mentor extends Person {
         return favouriteNumber;
     }
 
+    @Override
+    public String toString(){
+        String returnValue;
+        returnValue = String.format("%d, %s, %s, %s, %s, %s, %s, %d",
+                this.getId(), this.getFirstName(), this.getLastName(), this.getNickName(), this.getPhoneNumber(),
+                this.getEmail(), this.getCity(), this.getFavouriteNumber());
+        return returnValue;
+    }
 
 }

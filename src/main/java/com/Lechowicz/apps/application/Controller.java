@@ -77,7 +77,47 @@ public class Controller {
         return numberOfOption;
     }
 
+    private void searchByFullName(){
+        view.print("Please insert full name\n");
+        String fullName = input.getStringFromUser();
+        Person foundPerson = model.getMentor(fullName);
+        if(foundPerson != null){
+            view.print((Mentor)foundPerson);
+        }
+        else{
+            foundPerson = model.getCandidate(fullName);
+            view.print((Candidate)foundPerson);
+        }
+    }
+
+    private void searchByNickName(){
+        view.print("Please insert nick name\n");
+        String fullName = input.getStringFromUser();
+        Mentor foundPerson = model.getMentorByNick(fullName);
+        if(foundPerson != null) {
+            view.print(foundPerson);
+        }
+    }
+
     private void searchTables() {
+        view.print("Please choose option to search:\n");
+        view.print("1. full_name\n2. nick_name\n3. phone_number\n4. e-mail\n5. city\n6. application_code\n7. favourite_number\n");
+        Integer numberOfOption = input.getIntFromUser();
+        switch(numberOfOption){
+            case 1:
+                searchByFullName();
+                break;
+            case 2:
+                searchByNickName();
+                break;
+            case 3:
+                searchByPhoneNumber();
+            default:
+                view.print("Insert wrong input!");
+        }
+    }
+
+    private void searchByPhoneNumber() {
 
     }
 

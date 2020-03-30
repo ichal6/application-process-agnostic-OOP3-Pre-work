@@ -13,6 +13,16 @@ public class TerminalView extends View {
     }
 
     @Override
+    public void print(Candidate candidate) {
+        System.out.println(candidate);
+    }
+
+    @Override
+    public void print(Mentor mentor) {
+        System.out.println(mentor);
+    }
+
+    @Override
     public void printFullName(List<Person> listOfPerson) {
         clearScreen();
         System.out.println("first_name   |   last_name");

@@ -13,4 +13,13 @@ public class Candidate extends Person {
     public Integer getApplicationCode() {
         return applicationCode;
     }
+
+    @Override
+    public String toString(){
+        String returnValue;
+        returnValue = String.format("%d, %s, %s, %s, %s, %d",
+                this.getId(), this.getFirstName(), this.getLastName(), this.getPhoneNumber(), this.getEmail(),
+                this.getApplicationCode());
+        return returnValue;
+    }
 }

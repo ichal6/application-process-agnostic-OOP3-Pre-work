@@ -9,6 +9,10 @@ import java.util.List;
 public abstract class View {
     public abstract void print(String toDisplay);
 
+    public abstract void print(Candidate candidate);
+
+    public abstract void print(Mentor mentor);
+
     public abstract void printFullName(List<Person> mentors);
 
     public abstract void printNickName(List<Mentor> mentors);
