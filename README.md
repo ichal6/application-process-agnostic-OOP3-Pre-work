@@ -5,7 +5,7 @@
 
 2. Add advanced search feature to your application. Advanced search should take a search phrase from user and later on look for it in all tables in the database.
 
-3. Add records adding and updating feature. User should provide required data and those data should be saved in the database.
+3. ~~Add records adding and updating feature. User should provide required data and those data should be saved in the database.~~
 
 ## Additional requirements
 * ~~Save your queries to queries.sql file.~~
