@@ -88,7 +88,7 @@ public class Controller {
         String[] newPersonData = {"11" , "Markus", "Schaffarzyk", "003620/725-2666", "djnovus@groovecoverage.com", "54823"};
         model.addNewAplication(newPersonData);
         Candidate newCandidate = model.getCandidate(54823);
-        view.print(newCandidate);
+        view.printFullName(newCandidate);
     }
 
     private void answerSix(){
@@ -97,7 +97,7 @@ public class Controller {
         Candidate application = model.getCandidate(fullName);
         application.setPhoneNumber("003670/223-7459");
         model.updateAplication(fullName, application);
-        view.print(model.getCandidate(fullName));
+        view.printFullName(model.getCandidate(fullName));
     }
 
     private void answerSeven(){

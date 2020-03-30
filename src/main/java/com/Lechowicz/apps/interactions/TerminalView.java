@@ -40,8 +40,11 @@ public class TerminalView extends View {
     }
 
     @Override
-    public void print(Candidate newCandidate) {
-        System.out.println(newCandidate.getFullName() + " " + newCandidate.getPhoneNumber());
+    public void printFullName(Candidate candidate) {
+        System.out.println("first_name   |   last_name");
+        System.out.println("-------------+------------");
+        System.out.println(String.format("%-11s  |  %s", candidate.getFirstName(), candidate.getLastName()));
+
     }
 
 }
