@@ -63,10 +63,10 @@ public class Controller {
                 createMentor();
                 break;
             case 3:
-                updateApplication();
+                updatePerson(false);
                 break;
             case 4:
-                updateMentor();
+                updatePerson(true);
                 break;
             case 5:
                 searchTables();
@@ -78,15 +78,22 @@ public class Controller {
     }
 
     private void searchTables() {
+
     }
 
-    private void updateMentor() {
-    }
-
-    private void updateApplication() {
+    private Person searchPerson(Boolean isMentor){
         view.print("Please insert full name of search person: ");
         String fullName = input.getStringFromUser();
-        Candidate personToUpdate = model.getCandidate(fullName);
+        if(isMentor){
+            return model.getMentor(fullName);
+        }else{
+            return model.getCandidate(fullName);
+        }
+    }
+
+    private void updatePerson(Boolean isMentor) {
+        Person personToUpdate = searchPerson(isMentor);
+
         if( personToUpdate == null){
             view.print("Wrong input back to main menu\n");
             return;
@@ -104,7 +111,7 @@ public class Controller {
             String email = input.getStringFromUser();
             personToUpdate.setEmail(email);
         }
-        model.updateAplication(fullName, personToUpdate);
+        model.updatePerson(personToUpdate.getFullName(), personToUpdate);
     }
 
     private void createMentor() {
@@ -240,7 +247,7 @@ public class Controller {
         view.print(questions[5]);
         Candidate application = model.getCandidate(fullName);
         application.setPhoneNumber("003670/223-7459");
-        model.updateAplication(fullName, application);
+        model.updatePerson(fullName, application);
         view.printFullName(model.getCandidate(fullName));
     }
 
