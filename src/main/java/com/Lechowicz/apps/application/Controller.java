@@ -12,18 +12,22 @@ import java.util.List;
 
 public class Controller {
     private Integer NUMBER_OF_QUESTIONS = 7;
+    private Integer NUMBER_OF_OPTIONS = 4;
     private View view;
     private InputManager input;
     private Model model;
 
     private String[] questions;
+    private String[] options;
 
     public Controller() throws IOException, SQLException {
         input = new TerminalInput();
         view = new TerminalView();
         model = new Model();
         questions = new String[NUMBER_OF_QUESTIONS];
+        options = new String[NUMBER_OF_OPTIONS];
         fillQuestions();
+        fillOptions();
         runProgram();
     }
 
@@ -40,7 +44,63 @@ public class Controller {
             return standardMenu();
         }
         else{
-            return null;
+            return advanceMenu();
+        }
+    }
+
+    private Boolean advanceMenu(){
+        printOptions();
+        Integer numberOfOption = input.getIntFromUser();
+        return optionSwitch(numberOfOption) > 0;
+    }
+
+    private Integer optionSwitch(Integer numberOfOption) {
+        switch (numberOfOption){
+            case 1:
+                createApplication();
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            default:
+                view.print("Wrong input! Please insert the number from 0 to 4.\n");
+        }
+        return numberOfOption;
+    }
+
+    private void createApplication() {
+        String[] personData = new String[6];
+        view.print("Please insert id: ");
+        personData[0] = String.format("%s", input.getIntFromUser());
+        view.print("Please insert first name: ");
+        personData[1] = input.getStringFromUser();
+        view.print("Please insert last name: ");
+        personData[2] = input.getStringFromUser();
+        view.print("Please insert phone number: ");
+        personData[3] = input.getStringFromUser();
+        view.print("Please insert email: ");
+        personData[4] = input.getStringFromUser();
+        view.print("Please insert application code: ");
+        personData[5] = String.format("%s", input.getIntFromUser());
+
+        model.addNewAplication(personData);
+    }
+
+    private void fillOptions() {
+        options[0] = "Add new application to database.\n";
+        options[1] = "Add new mentor to database.\n";
+        options[2] = "Update application.\n";
+        options[3] = "Update mentor.\n";
+    }
+
+    private void printOptions() {
+        view.print(String.format("%d. %s", 0, "Please insert 0 to exit\n"));
+        Integer index = 1;
+        for(String option : options){
+            view.print(String.format("%d. %s", index++, option));
         }
     }
 

@@ -20,4 +20,10 @@ public class TerminalInput extends InputManager {
 
         return input;
     }
+
+    @Override
+    public String getStringFromUser() {
+        Scanner scannerFromUser = new Scanner(System.in);
+        return scannerFromUser.next();
+    }
 }
