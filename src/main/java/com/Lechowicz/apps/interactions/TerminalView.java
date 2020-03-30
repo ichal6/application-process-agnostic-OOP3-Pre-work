@@ -23,6 +23,8 @@ public class TerminalView extends View {
 
     @Override
     public void printNickName(List<Mentor> mentors) {
+        System.out.println("nick_name");
+        System.out.println("---------");
         for(Mentor mentor: mentors){
             System.out.println(mentor.getNickName());
         }
