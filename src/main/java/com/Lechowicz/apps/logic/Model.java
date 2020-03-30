@@ -59,7 +59,7 @@ public class Model {
         return daoDB.getCandidateByCode(appCode);
     }
 
-    public void updateAplication(String fullName, Person updatePerson){
+    public void updatePerson(String fullName, Person updatePerson){
         daoDB.updatePerson(fullName, updatePerson);
     }
 
@@ -71,5 +71,9 @@ public class Model {
 
     public Candidate getCandidate(String fullName) {
         return daoDB.getCandidateByFullName(fullName);
+    }
+
+    public Person getMentor(String fullName) {
+        return daoDB.getMentorByFullName(fullName);
     }
 }

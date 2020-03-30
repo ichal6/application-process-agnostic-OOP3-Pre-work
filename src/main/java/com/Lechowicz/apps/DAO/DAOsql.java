@@ -232,4 +232,14 @@ public class DAOsql implements InterfaceDAO {
         return null;
     }
 
+    @Override
+    public Mentor getMentorByFullName(String fullName){
+            for(Person person : mentors) {
+                if (person.getFullName().equals(fullName)) {
+                    return (Mentor) person;
+                }
+            }
+            return null;
+    }
+
 }

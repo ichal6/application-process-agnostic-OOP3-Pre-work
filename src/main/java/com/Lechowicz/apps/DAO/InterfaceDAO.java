@@ -21,4 +21,6 @@ public interface InterfaceDAO {
     public Candidate getCandidateByCode(Integer appCode);
 
     public Candidate getCandidateByFullName(String fullName);
+
+    public Mentor getMentorByFullName(String fullName);
 }
