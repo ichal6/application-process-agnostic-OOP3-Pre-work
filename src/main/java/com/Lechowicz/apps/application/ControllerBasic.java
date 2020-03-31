@@ -16,9 +16,9 @@ public class ControllerBasic {
 
     private String[] questions;
 
-    public ControllerBasic(Model model) throws IOException, SQLException {
-        input = new TerminalInput();
-        view = new TerminalView();
+    public ControllerBasic(Model model, View view, InputManager input) throws IOException, SQLException {
+        this.input = input;
+        this.view = view;
         this.model = model;
         questions = new String[NUMBER_OF_QUESTIONS];
         fillQuestions();

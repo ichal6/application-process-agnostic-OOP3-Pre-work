@@ -20,9 +20,9 @@ public class ControllerAdvance {
     private Model model;
     private String[] options;
 
-    public ControllerAdvance(Model model) throws IOException, SQLException {
-        view = new TerminalView();
-        input = new TerminalInput();
+    public ControllerAdvance(Model model, View view, InputManager input) throws IOException, SQLException {
+        this.view = view;
+        this.input = input;
         options = new String[NUMBER_OF_OPTIONS];
         this.model = model;
 

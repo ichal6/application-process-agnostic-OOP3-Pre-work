@@ -2,16 +2,15 @@ package com.Lechowicz.apps.application;
 
 import com.Lechowicz.apps.interactions.*;
 import com.Lechowicz.apps.logic.Model;
-import com.Lechowicz.apps.persons.*;
+
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
+
 
 public class Controller {
     private View view;
     private InputManager input;
-    private Model model;
     private ControllerBasic controllerBasic;
     private ControllerAdvance controllerAdvance;
 
@@ -19,9 +18,9 @@ public class Controller {
     public Controller() throws IOException, SQLException {
         input = new TerminalInput();
         view = new TerminalView();
-        model = new Model();
-        controllerBasic = new ControllerBasic(model);
-        controllerAdvance = new ControllerAdvance(model);
+        Model model = new Model();
+        controllerBasic = new ControllerBasic(model, view, input);
+        controllerAdvance = new ControllerAdvance(model, view, input);
     }
 
     public void runProgram(){
