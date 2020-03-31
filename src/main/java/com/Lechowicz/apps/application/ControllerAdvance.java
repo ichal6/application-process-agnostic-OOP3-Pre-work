@@ -1,16 +1,10 @@
 package com.Lechowicz.apps.application;
 
 import com.Lechowicz.apps.interactions.InputManager;
-import com.Lechowicz.apps.interactions.TerminalInput;
-import com.Lechowicz.apps.interactions.TerminalView;
 import com.Lechowicz.apps.interactions.View;
 import com.Lechowicz.apps.logic.Model;
-import com.Lechowicz.apps.persons.Candidate;
-import com.Lechowicz.apps.persons.Mentor;
-import com.Lechowicz.apps.persons.Person;
+import com.Lechowicz.apps.persons.*;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 public class ControllerAdvance {
@@ -37,6 +31,8 @@ public class ControllerAdvance {
 
     private Integer optionSwitch(Integer numberOfOption) {
         switch (numberOfOption){
+            case 0:
+                break;
             case 1:
                 createApplication();
                 break;
@@ -164,9 +160,6 @@ public class ControllerAdvance {
                 view.print("Insert wrong input!");
         }
     }
-
-
-
 
     private Person searchPerson(Boolean isMentor){
         view.print("Please insert full name of search person: ");
