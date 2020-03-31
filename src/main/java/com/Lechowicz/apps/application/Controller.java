@@ -20,8 +20,8 @@ public class Controller {
         input = new TerminalInput();
         view = new TerminalView();
         model = new Model();
-        controllerBasic = new ControllerBasic();
-        controllerAdvance = new ControllerAdvance();
+        controllerBasic = new ControllerBasic(model);
+        controllerAdvance = new ControllerAdvance(model);
     }
 
     public void runProgram(){

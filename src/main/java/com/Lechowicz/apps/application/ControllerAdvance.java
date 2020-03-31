@@ -20,11 +20,11 @@ public class ControllerAdvance {
     private Model model;
     private String[] options;
 
-    public ControllerAdvance() throws IOException, SQLException {
+    public ControllerAdvance(Model model) throws IOException, SQLException {
         view = new TerminalView();
         input = new TerminalInput();
         options = new String[NUMBER_OF_OPTIONS];
-        model = new Model();
+        this.model = model;
 
         fillOptions();
     }

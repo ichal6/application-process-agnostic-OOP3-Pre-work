@@ -16,10 +16,10 @@ public class ControllerBasic {
 
     private String[] questions;
 
-    public ControllerBasic() throws IOException, SQLException {
+    public ControllerBasic(Model model) throws IOException, SQLException {
         input = new TerminalInput();
         view = new TerminalView();
-        model = new Model();
+        this.model = model;
         questions = new String[NUMBER_OF_QUESTIONS];
         fillQuestions();
     }
