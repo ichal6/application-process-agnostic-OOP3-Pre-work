@@ -2,9 +2,7 @@ package com.Lechowicz.apps.application;
 
 import com.Lechowicz.apps.interactions.*;
 import com.Lechowicz.apps.logic.Model;
-import com.Lechowicz.apps.persons.Candidate;
-import com.Lechowicz.apps.persons.Mentor;
-import com.Lechowicz.apps.persons.Person;
+import com.Lechowicz.apps.persons.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -28,10 +26,9 @@ public class Controller {
         options = new String[NUMBER_OF_OPTIONS];
         fillQuestions();
         fillOptions();
-        runProgram();
     }
 
-    private void runProgram(){
+    public void runProgram(){
         Boolean isRun = true;
         while(isRun){
             isRun = mainMenu();
