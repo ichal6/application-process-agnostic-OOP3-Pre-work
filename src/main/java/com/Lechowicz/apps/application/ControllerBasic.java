@@ -30,18 +30,6 @@ public class ControllerBasic {
         return answerSwitch(numberOfAnswer) > 0;
     }
 
-    private Integer chooseOptions(){
-        view.print("Please choose submenu:\n");
-        view.print("1. Standard questions.\n");
-        view.print("2. User's questions\n");
-
-        Integer numberOfAnswer;
-        do {
-            numberOfAnswer = input.getIntFromUser();
-        }while(numberOfAnswer < 0 || numberOfAnswer > 3);
-
-        return numberOfAnswer;
-    }
 
     private void fillQuestions() {
         questions[0] = "Write a query that returns the 2 name columns of the mentors table\n";
