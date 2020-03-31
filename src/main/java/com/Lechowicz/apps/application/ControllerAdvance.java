@@ -20,7 +20,7 @@ public class ControllerAdvance {
     private Model model;
     private String[] options;
 
-    public ControllerAdvance(Model model, View view, InputManager input) throws IOException, SQLException {
+    public ControllerAdvance(Model model, View view, InputManager input){
         this.view = view;
         this.input = input;
         options = new String[NUMBER_OF_OPTIONS];

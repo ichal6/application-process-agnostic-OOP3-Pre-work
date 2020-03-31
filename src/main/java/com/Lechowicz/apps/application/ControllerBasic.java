@@ -4,8 +4,6 @@ import com.Lechowicz.apps.interactions.*;
 import com.Lechowicz.apps.logic.Model;
 import com.Lechowicz.apps.persons.*;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 public class ControllerBasic {
@@ -16,7 +14,7 @@ public class ControllerBasic {
 
     private String[] questions;
 
-    public ControllerBasic(Model model, View view, InputManager input) throws IOException, SQLException {
+    public ControllerBasic(Model model, View view, InputManager input){
         this.input = input;
         this.view = view;
         this.model = model;
