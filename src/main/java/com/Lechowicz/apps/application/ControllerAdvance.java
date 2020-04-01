@@ -13,14 +13,14 @@ public class ControllerAdvance {
     private Integer NUMBER_OF_OPTIONS = 5;
     private Model model;
     private String[] options;
-    private ControllerSearch controllerSearch;
+
 
     public ControllerAdvance(Model model, View view, InputManager input){
         this.view = view;
         this.input = input;
         options = new String[NUMBER_OF_OPTIONS];
         this.model = model;
-        controllerSearch = new ControllerSearch(model, view, input);
+
         fillOptions();
     }
 
@@ -45,9 +45,6 @@ public class ControllerAdvance {
                 break;
             case 4:
                 updatePerson(true);
-                break;
-            case 5:
-                controllerSearch.searchTables();
                 break;
             default:
                 view.print("Wrong input! Please insert the number from 0 to 4.\n");

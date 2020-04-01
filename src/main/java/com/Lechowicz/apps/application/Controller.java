@@ -13,7 +13,7 @@ public class Controller {
     private InputManager input;
     private ControllerBasic controllerBasic;
     private ControllerAdvance controllerAdvance;
-
+    private ControllerSearch controllerSearch;
 
     public Controller() throws IOException, SQLException {
         input = new TerminalInput();
@@ -21,6 +21,7 @@ public class Controller {
         Model model = new Model();
         controllerBasic = new ControllerBasic(model, view, input);
         controllerAdvance = new ControllerAdvance(model, view, input);
+        controllerSearch = new ControllerSearch(model, view, input);
     }
 
     public void runProgram(){
@@ -37,10 +38,13 @@ public class Controller {
             case 0:
                 return false;
             case 1:
-                return controllerBasic.standardMenu();
+                controllerBasic.standardMenu();
+                break;
             case 2:
-                return controllerAdvance.advanceMenu();
+                controllerAdvance.advanceMenu();
+                break;
             case 3 :
+                controllerSearch.searchTables();
                 break;
             default:
                 view.print("Choose wrong input!");
