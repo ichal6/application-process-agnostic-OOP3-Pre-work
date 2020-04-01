@@ -40,7 +40,7 @@ public class ControllerBasic {
     }
 
     private void printQuestions(){
-        view.print(String.format("%d. %s", 0, "Please insert 0 to exit\n"));
+        view.print(String.format("%d. %s", 0, "Back to main menu\n"));
         Integer index = 1;
         for(String question : questions){
             view.print(String.format("%d. %s", index++, question));

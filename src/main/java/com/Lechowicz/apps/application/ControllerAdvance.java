@@ -10,7 +10,7 @@ import java.util.List;
 public class ControllerAdvance {
     View view;
     InputManager input;
-    private Integer NUMBER_OF_OPTIONS = 5;
+    private Integer NUMBER_OF_OPTIONS = 4;
     private Model model;
     private String[] options;
 
@@ -132,11 +132,10 @@ public class ControllerAdvance {
         options[1] = "Add new mentor to database.\n";
         options[2] = "Update application.\n";
         options[3] = "Update mentor.\n";
-        options[4] = "Search phrase in database\n";
     }
 
     private void printOptions() {
-        view.print(String.format("%d. %s", 0, "Please insert 0 to exit\n"));
+        view.print(String.format("%d. %s", 0, "Back to main menu\n"));
         Integer index = 1;
         for(String option : options){
             view.print(String.format("%d. %s", index++, option));
