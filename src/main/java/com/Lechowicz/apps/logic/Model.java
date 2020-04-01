@@ -131,6 +131,9 @@ public class Model {
         List<Person> mentors = daoDB.getMentors();
         for(Person person : mentors){
             Mentor mentor = (Mentor) person;
+            if(mentor.getFavouriteNumber() == null){
+                continue;
+            }
             if(mentor.getFavouriteNumber().equals(nmb)){
                 return mentor;
             }
