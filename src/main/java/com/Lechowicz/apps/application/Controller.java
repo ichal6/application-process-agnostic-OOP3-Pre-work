@@ -13,7 +13,7 @@ public class Controller {
     private InputManager input;
     private ControllerBasic controllerBasic;
     private ControllerAdvance controllerAdvance;
-
+    private ControllerSearch controllerSearch;
 
     public Controller() throws IOException, SQLException {
         input = new TerminalInput();
@@ -21,6 +21,7 @@ public class Controller {
         Model model = new Model();
         controllerBasic = new ControllerBasic(model, view, input);
         controllerAdvance = new ControllerAdvance(model, view, input);
+        controllerSearch = new ControllerSearch(model, view, input);
     }
 
     public void runProgram(){
@@ -31,25 +32,36 @@ public class Controller {
     }
 
     private Boolean mainMenu(){
+        displayOptions();
         Integer switchMenu = chooseOptions();
-        if(switchMenu == 1){
-            return controllerBasic.standardMenu();
+        switch(switchMenu){
+            case 0:
+                return false;
+            case 1:
+                controllerBasic.standardMenu();
+                break;
+            case 2:
+                controllerAdvance.advanceMenu();
+                break;
+            case 3 :
+                controllerSearch.searchTables();
+                break;
+            default:
+                view.print("Choose wrong input!");
         }
-        else{
-            return controllerAdvance.advanceMenu();
-        }
+        return true;
+    }
+
+    private void displayOptions(){
+        view.print("Please choose submenu:\n0. Exit\n1. Standard questions.\n2. Add or update table\n" +
+                   "3. Search in tables\n");
     }
 
 
     private Integer chooseOptions(){
-        view.print("Please choose submenu:\n");
-        view.print("1. Standard questions.\n");
-        view.print("2. User's questions\n");
 
-        Integer numberOfAnswer;
-        do {
-            numberOfAnswer = input.getIntFromUser();
-        }while(numberOfAnswer < 0 || numberOfAnswer > 3);
+
+        Integer numberOfAnswer = input.getIntFromUser();
 
         return numberOfAnswer;
     }
