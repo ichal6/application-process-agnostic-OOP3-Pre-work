@@ -1,5 +1,6 @@
 #IDE files
 .idea
 stale_outputs_checked
+target
 # class file
 *.class
