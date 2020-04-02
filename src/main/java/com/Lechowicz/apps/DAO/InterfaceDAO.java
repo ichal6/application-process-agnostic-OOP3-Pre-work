@@ -8,9 +8,7 @@ import java.util.List;
 
 public interface InterfaceDAO {
 
-    public List<Person> getMentors();
-
-    public List<Person> getCandidates();
+    public List<Person> getPersons();
 
     public void updatePerson(String fullName, Person person);
 

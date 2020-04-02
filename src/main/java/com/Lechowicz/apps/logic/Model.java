@@ -1,7 +1,7 @@
 package com.Lechowicz.apps.logic;
 
+import com.Lechowicz.apps.DAO.DAOCandidates;
 import com.Lechowicz.apps.DAO.DAOMentors;
-import com.Lechowicz.apps.DAO.DAOsql;
 import com.Lechowicz.apps.DAO.InterfaceDAO;
 import com.Lechowicz.apps.persons.Candidate;
 import com.Lechowicz.apps.persons.Mentor;
@@ -13,18 +13,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
-    InterfaceDAO daoDB;
+    InterfaceDAO daoMentors;
+    InterfaceDAO daoCandidates;
+    List<Person> listMentors;
+    List<Person> listCandidates;
 
     public Model() throws IOException, SQLException {
-        daoDB = new DAOMentors();
+        daoMentors = new DAOMentors();
+        daoCandidates = new DAOCandidates();
+        listMentors = getAllMentors();
+        listCandidates = getAllApplications();
     }
 
     public List<Person> getAllMentors() {
-        return daoDB.getMentors();
+        return daoMentors.getPersons();
     }
 
-    public List<Person>  getAllAplications(){
-        return daoDB.getCandidates();
+    public List<Person> getAllApplications(){
+        return daoCandidates.getPersons();
     }
 
     public List<Mentor> getMentorsByCity(String city){
@@ -40,7 +46,7 @@ public class Model {
 
     public List<Person> getCandidateByEmailPattern(String pattern){
         List<Person> candidates = new ArrayList<>();
-        for(Person person: this.getAllAplications()){
+        for(Person person: this.getAllApplications()){
             if(person.getEmail().contains(pattern)){
                 candidates.add(person);
             }
@@ -48,16 +54,16 @@ public class Model {
         return candidates;
     }
 
-    public void addNewAplication(String[] personData){
-        daoDB.addPerson(personData, false);
+    public void addNewApplication(String[] personData){
+        daoMentors.addPerson(personData, false);
     }
 
     public void addNewMentor(String[] personData){
-        daoDB.addPerson(personData, true);
+        daoMentors.addPerson(personData, true);
     }
 
     public Candidate getCandidate(Integer appCode){
-        for(Person person : daoDB.getCandidates()){
+        for(Person person : listCandidates){
             Candidate candidate = (Candidate) person;
             if(candidate.getApplicationCode().equals(appCode)){
                 return candidate;
@@ -68,17 +74,17 @@ public class Model {
     }
 
     public void updatePerson(String fullName, Person updatePerson){
-        daoDB.updatePerson(fullName, updatePerson);
+        daoMentors.updatePerson(fullName, updatePerson);
     }
 
-    public void deleteAplication(List<Person> candidatesToRemove){
+    public void deleteApplication(List<Person> candidatesToRemove){
         for(Person candidate: candidatesToRemove){
-            daoDB.deletePerson(candidate);
+            daoMentors.deletePerson(candidate);
         }
     }
 
     public Candidate getCandidate(String fullName) {
-        for(Person person : daoDB.getCandidates()){
+        for(Person person : listCandidates){
             if(person.getFullName().equals(fullName)){
                 return (Candidate) person;
             }
@@ -87,7 +93,7 @@ public class Model {
     }
 
     public Mentor getMentor(String fullName) {
-        for(Person person : daoDB.getMentors()) {
+        for(Person person : listMentors) {
             if (person.getFullName().equals(fullName)) {
                 return (Mentor) person;
             }
@@ -96,7 +102,7 @@ public class Model {
     }
 
     public Mentor getMentorByNick(String nickName){
-        List<Person> mentors = daoDB.getMentors();
+        List<Person> mentors = listMentors;
         for(Person person : mentors){
             if(((Mentor) person).getNickName().equals(nickName)){
                 return (Mentor) person;
@@ -106,7 +112,7 @@ public class Model {
     }
 
     public Mentor getMentorByPhone(String phone){
-        List<Person> mentors = daoDB.getMentors();
+        List<Person> mentors = listMentors;
         for(Person person : mentors){
             if(person.getPhoneNumber().equals(phone)){
                 return (Mentor) person;
@@ -116,7 +122,7 @@ public class Model {
     }
 
     public Candidate getCandidateByPhone(String phone){
-        List<Person> candidates = daoDB.getCandidates();
+        List<Person> candidates = listCandidates;
         for(Person person : candidates){
             if(person.getPhoneNumber().equals(phone)){
                 return (Candidate) person;
@@ -126,7 +132,7 @@ public class Model {
     }
 
     public Candidate getCandidateByEmail(String mail) {
-        List<Person> candidates = daoDB.getCandidates();
+        List<Person> candidates = listCandidates;
         for(Person person : candidates){
             if(person.getEmail().equals(mail)){
                 return (Candidate) person;
@@ -136,7 +142,7 @@ public class Model {
     }
 
     public Mentor getMentorByEmail(String mail) {
-        List<Person> mentors = daoDB.getMentors();
+        List<Person> mentors = listMentors;
         for(Person person : mentors){
             if(person.getEmail().equals(mail)){
                 return (Mentor) person;
@@ -146,7 +152,7 @@ public class Model {
     }
 
     public Mentor getMentorByFavNmb(Integer nmb) {
-        List<Person> mentors = daoDB.getMentors();
+        List<Person> mentors = listMentors;
         for(Person person : mentors){
             Mentor mentor = (Mentor) person;
             if(mentor.getFavouriteNumber().equals(nmb)){

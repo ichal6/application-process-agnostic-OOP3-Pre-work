@@ -62,7 +62,7 @@ public class ControllerBasic {
 
     private void answerThree(){
         view.print(questions[2]);
-        List<Person> candidates = model.getAllAplications();
+        List<Person> candidates = model.getAllApplications();
         view.printFullNameAndPhone(candidates);
     }
 
@@ -75,7 +75,7 @@ public class ControllerBasic {
     private void answerFive(){
         view.print(questions[4]);
         String[] newPersonData = {"11" , "Markus", "Schaffarzyk", "003620/725-2666", "djnovus@groovecoverage.com", "54823"};
-        model.addNewAplication(newPersonData);
+        model.addNewApplication(newPersonData);
         Candidate newCandidate = model.getCandidate(54823);
         view.printFullName(newCandidate);
     }
@@ -92,8 +92,8 @@ public class ControllerBasic {
     private void answerSeven(){
         view.print(questions[6]);
         List<Person> candidates = model.getCandidateByEmailPattern("@mauriseu.net");
-        model.deleteAplication(candidates);
-        view.printFullName(model.getAllAplications());
+        model.deleteApplication(candidates);
+        view.printFullName(model.getAllApplications());
     }
 
 

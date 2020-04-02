@@ -5,8 +5,6 @@ import com.Lechowicz.apps.interactions.View;
 import com.Lechowicz.apps.logic.Model;
 import com.Lechowicz.apps.persons.*;
 
-import java.util.List;
-
 public class ControllerAdvance {
     View view;
     InputManager input;
@@ -124,7 +122,7 @@ public class ControllerAdvance {
         view.print("Please insert application code: ");
         personData[5] = String.format("%s", input.getIntFromUser());
 
-        model.addNewAplication(personData);
+        model.addNewApplication(personData);
     }
 
     private void fillOptions() {

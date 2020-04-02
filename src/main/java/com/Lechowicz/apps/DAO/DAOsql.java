@@ -17,8 +17,8 @@ import java.util.Properties;
 
 
 public abstract class DAOsql implements InterfaceDAO {
-    private List<Person> mentors;
-    private List<Person> candidates;
+    protected List<Person> mentors;
+    protected List<Person> candidates;
 
     private String url;
     private String user;
@@ -128,15 +128,6 @@ public abstract class DAOsql implements InterfaceDAO {
         fillLists(con);
     }
 
-    @Override
-    public List<Person> getMentors() {
-        return mentors;
-    }
-
-    @Override
-    public List<Person> getCandidates() {
-        return candidates;
-    }
 
     @Override
     public void updatePerson(String fullName, Person person) {
