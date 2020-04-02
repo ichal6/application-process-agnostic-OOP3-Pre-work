@@ -49,7 +49,7 @@ public abstract class DAOsql implements InterfaceDAO {
         return props;
     }
 
-    private void updateDataBase() throws SQLException, FileNotFoundException {
+    protected void updateDataBase() throws SQLException, FileNotFoundException {
         Connection con = DriverManager.getConnection(url, user, password);
         ScriptRunner sr = new ScriptRunner(con);
 
@@ -124,33 +124,6 @@ public abstract class DAOsql implements InterfaceDAO {
         con.close();
     }
 
-
-
-    @Override
-    public void updatePerson(String fullName, Person person) {
-        List<Person> searchList;
-        if(person instanceof Mentor){
-          searchList = mentors;
-        }
-        else{
-            searchList = candidates;
-        }
-        for(int index = 0; index < searchList.size(); index++){
-            if(fullName.equals(searchList.get(index).getFullName())){
-                searchList.remove(searchList.get(index));
-                searchList.add(person);
-                break;
-            }
-        }
-
-        try {
-            updateDataBase();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void deletePerson(Person person) {

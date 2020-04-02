@@ -4,6 +4,7 @@ import com.Lechowicz.apps.persons.Candidate;
 import com.Lechowicz.apps.persons.Mentor;
 import com.Lechowicz.apps.persons.Person;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,4 +19,21 @@ public class DAOMentors extends DAOsql implements InterfaceDAO {
         return super.mentors;
     }
 
+    @Override
+    public void updatePerson(String fullName, Person person) {
+
+        for(int index = 0; index < mentors.size(); index++){
+            if(fullName.equals(mentors.get(index).getFullName())){
+                mentors.remove(mentors.get(index));
+                mentors.add(person);
+                break;
+            }
+        }
+
+        try {
+            super.updateDataBase();
+        } catch (SQLException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }
