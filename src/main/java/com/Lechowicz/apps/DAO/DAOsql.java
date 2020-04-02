@@ -210,36 +210,5 @@ public class DAOsql implements InterfaceDAO {
         }
     }
 
-    @Override
-    public Candidate getCandidateByCode(Integer appCode) {
-        for(Person person : candidates){
-            Candidate candidate = (Candidate) person;
-            if(candidate.getApplicationCode().equals(appCode)){
-                return candidate;
-            }
-        }
-
-        return null;
-    }
-
-    @Override
-    public Candidate getCandidateByFullName(String fullName) {
-        for(Person person : candidates){
-            if(person.getFullName().equals(fullName)){
-                return (Candidate) person;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public Mentor getMentorByFullName(String fullName){
-            for(Person person : mentors) {
-                if (person.getFullName().equals(fullName)) {
-                    return (Mentor) person;
-                }
-            }
-            return null;
-    }
 
 }

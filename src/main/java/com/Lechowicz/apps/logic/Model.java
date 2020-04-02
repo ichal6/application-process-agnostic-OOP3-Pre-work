@@ -56,7 +56,14 @@ public class Model {
     }
 
     public Candidate getCandidate(Integer appCode){
-        return daoDB.getCandidateByCode(appCode);
+        for(Person person : daoDB.getCandidates()){
+            Candidate candidate = (Candidate) person;
+            if(candidate.getApplicationCode().equals(appCode)){
+                return candidate;
+            }
+        }
+
+        return null;
     }
 
     public void updatePerson(String fullName, Person updatePerson){
@@ -70,11 +77,21 @@ public class Model {
     }
 
     public Candidate getCandidate(String fullName) {
-        return daoDB.getCandidateByFullName(fullName);
+        for(Person person : daoDB.getCandidates()){
+            if(person.getFullName().equals(fullName)){
+                return (Candidate) person;
+            }
+        }
+        return null;
     }
 
     public Mentor getMentor(String fullName) {
-        return daoDB.getMentorByFullName(fullName);
+        for(Person person : daoDB.getMentors()) {
+            if (person.getFullName().equals(fullName)) {
+                return (Mentor) person;
+            }
+        }
+        return null;
     }
 
     public Mentor getMentorByNick(String nickName){

@@ -18,9 +18,4 @@ public interface InterfaceDAO {
 
     public void addPerson(String[] personData, Boolean isMentor);
 
-    public Candidate getCandidateByCode(Integer appCode);
-
-    public Candidate getCandidateByFullName(String fullName);
-
-    public Mentor getMentorByFullName(String fullName);
 }
