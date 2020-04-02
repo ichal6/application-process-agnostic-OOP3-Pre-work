@@ -3,9 +3,7 @@ package com.Lechowicz.apps.application;
 import com.Lechowicz.apps.DAO.DAOCandidates;
 import com.Lechowicz.apps.DAO.DAOMentors;
 import com.Lechowicz.apps.DAO.InterfaceDAO;
-import com.Lechowicz.apps.persons.Candidate;
-import com.Lechowicz.apps.persons.Mentor;
-import com.Lechowicz.apps.persons.Person;
+import com.Lechowicz.apps.persons.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
