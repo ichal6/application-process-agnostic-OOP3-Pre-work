@@ -69,13 +69,9 @@ public class ControllerSearch {
     }
 
     private void searchByFavNum() {
-        //something here is wrong!
         view.print("Please insert favourite number: \n");
         Integer number = input.getIntFromUser();
-        Mentor foundPerson = model.getMentorByFavNmb(number);
-        if(foundPerson != null) {
-            view.print(foundPerson);
-        }
+        view.print(model.getMentorByFavNmb(number));
     }
 
     private void searchByAppCode() {
