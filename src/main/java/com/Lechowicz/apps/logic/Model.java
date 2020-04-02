@@ -55,7 +55,7 @@ public class Model {
     }
 
     public void addNewApplication(String[] personData){
-        daoMentors.addPerson(personData, false);
+        daoCandidates.addPerson(personData, false);
     }
 
     public void addNewMentor(String[] personData){
@@ -73,13 +73,17 @@ public class Model {
         return null;
     }
 
-    public void updatePerson(String fullName, Person updatePerson){
+    public void updateMentor(String fullName, Person updatePerson){
         daoMentors.updatePerson(fullName, updatePerson);
+    }
+
+    public void updateCandidate(String fullName, Person updatePerson){
+        daoCandidates.updatePerson(fullName, updatePerson);
     }
 
     public void deleteApplication(List<Person> candidatesToRemove){
         for(Person candidate: candidatesToRemove){
-            daoMentors.deletePerson(candidate);
+            daoCandidates.deletePerson(candidate);
         }
     }
 

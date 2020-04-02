@@ -85,7 +85,7 @@ public class ControllerBasic {
         view.print(questions[5]);
         Candidate application = model.getCandidate(fullName);
         application.setPhoneNumber("003670/223-7459");
-        model.updatePerson(fullName, application);
+        model.updateCandidate(fullName, application);
         view.printFullName(model.getCandidate(fullName));
     }
 

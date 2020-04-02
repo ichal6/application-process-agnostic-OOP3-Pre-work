@@ -80,7 +80,12 @@ public class ControllerAdvance {
             String email = input.getStringFromUser();
             personToUpdate.setEmail(email);
         }
-        model.updatePerson(personToUpdate.getFullName(), personToUpdate);
+        if(isMentor){
+            model.updateMentor(personToUpdate.getFullName(), personToUpdate);
+        }else {
+            model.updateCandidate(personToUpdate.getFullName(), personToUpdate);
+        }
+
     }
 
     private void createMentor() {
