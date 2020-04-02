@@ -1,5 +1,6 @@
 package com.Lechowicz.apps.logic;
 
+import com.Lechowicz.apps.DAO.DAOMentors;
 import com.Lechowicz.apps.DAO.DAOsql;
 import com.Lechowicz.apps.DAO.InterfaceDAO;
 import com.Lechowicz.apps.persons.Candidate;
@@ -15,7 +16,7 @@ public class Model {
     InterfaceDAO daoDB;
 
     public Model() throws IOException, SQLException {
-        daoDB = new DAOsql();
+        daoDB = new DAOMentors();
     }
 
     public List<Person> getAllMentors() {
