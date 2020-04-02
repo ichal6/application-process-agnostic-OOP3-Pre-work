@@ -37,4 +37,34 @@ public class DAOCandidates extends DAOsql implements InterfaceDAO {
             e.printStackTrace();
         }
     }
+
+
+    @Override
+    public void deletePerson(Person person) {
+        candidates.removeIf(singlePerson -> person == singlePerson);
+
+        try {
+            updateDataBase();
+        } catch (SQLException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void addPerson(String[] personData, Boolean isMentor) {
+        Candidate newCandidate = new Candidate(personData);
+        for (Person person : candidates) {
+            Candidate singleCandidate = (Candidate) person;
+            if (newCandidate.getApplicationCode().equals((singleCandidate.getApplicationCode()))) {
+                return;
+            }
+        }
+        candidates.add(newCandidate);
+
+        try {
+            updateDataBase();
+        } catch (SQLException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

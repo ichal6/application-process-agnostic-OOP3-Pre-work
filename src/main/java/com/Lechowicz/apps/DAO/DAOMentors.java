@@ -36,4 +36,27 @@ public class DAOMentors extends DAOsql implements InterfaceDAO {
             e.printStackTrace();
         }
     }
+
+
+    @Override
+    public void deletePerson(Person person) {
+        mentors.removeIf(singlePerson -> person == singlePerson);
+
+        try {
+            updateDataBase();
+        } catch (SQLException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void addPerson(String[] personData, Boolean isMentor) {
+        mentors.add(new Mentor(personData));
+
+        try {
+            updateDataBase();
+        } catch (SQLException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }
