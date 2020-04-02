@@ -6,18 +6,24 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.*;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class DAOCandidates extends DAOsql implements InterfaceDAO {
+    private List<Person> candidates;
+
     public DAOCandidates() throws IOException, SQLException {
         super();
+        candidates = new ArrayList<>();
         fillList();
     }
 
 
     @Override
     public List<Person> getPersons() {
-        return super.candidates;
+        return candidates;
     }
 
     @Override

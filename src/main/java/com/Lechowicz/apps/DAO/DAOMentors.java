@@ -6,17 +6,21 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.*;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DAOMentors extends DAOsql implements InterfaceDAO {
+    private List<Person> mentors;
+
     public DAOMentors() throws IOException, SQLException {
         super();
+        mentors = new ArrayList<>();
         fillList();
     }
 
     @Override
     public List<Person> getPersons() {
-        return super.mentors;
+        return mentors;
     }
 
     @Override
