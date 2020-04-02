@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Properties;
 
 
-public class DAOsql implements InterfaceDAO {
+public abstract class DAOsql implements InterfaceDAO {
     private List<Person> mentors;
     private List<Person> candidates;
 
