@@ -35,7 +35,7 @@ public abstract class DAOsql implements InterfaceDAO {
 
         mentors = new ArrayList<>();
         candidates = new ArrayList<>();
-        openDB();
+        fillLists();
     }
 
     public static Properties readProperties(String path) throws IOException {
@@ -99,7 +99,8 @@ public abstract class DAOsql implements InterfaceDAO {
         con.close();
     }
 
-    private void fillLists(Connection con) throws SQLException {
+    private void fillLists() throws SQLException {
+        Connection con = DriverManager.getConnection(url, user, password);
         PreparedStatement pst = con.prepareStatement("SELECT * FROM applicants");
         ResultSet rs = pst.executeQuery();
 
@@ -123,10 +124,6 @@ public abstract class DAOsql implements InterfaceDAO {
         con.close();
     }
 
-    private void openDB() throws SQLException{
-        Connection con = DriverManager.getConnection(url, user, password);
-        fillLists(con);
-    }
 
 
     @Override
