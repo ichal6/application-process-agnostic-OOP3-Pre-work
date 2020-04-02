@@ -1,7 +1,6 @@
 package com.Lechowicz.apps.application;
 
 import com.Lechowicz.apps.interactions.*;
-import com.Lechowicz.apps.logic.Model;
 import com.Lechowicz.apps.persons.*;
 
 import java.util.List;

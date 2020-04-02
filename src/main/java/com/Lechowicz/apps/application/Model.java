@@ -1,4 +1,4 @@
-package com.Lechowicz.apps.logic;
+package com.Lechowicz.apps.application;
 
 import com.Lechowicz.apps.DAO.DAOCandidates;
 import com.Lechowicz.apps.DAO.DAOMentors;

@@ -2,7 +2,6 @@ package com.Lechowicz.apps.application;
 
 import com.Lechowicz.apps.interactions.InputManager;
 import com.Lechowicz.apps.interactions.View;
-import com.Lechowicz.apps.logic.Model;
 import com.Lechowicz.apps.persons.*;
 
 public class ControllerAdvance {
