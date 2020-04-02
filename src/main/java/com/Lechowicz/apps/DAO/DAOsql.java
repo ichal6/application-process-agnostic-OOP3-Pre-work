@@ -23,9 +23,6 @@ public abstract class DAOsql implements InterfaceDAO {
     protected String url;
     protected String user;
     protected String password;
-    private String[] params = new String[8];
-    private Integer lengthOfCandidate = 6;
-    private Integer lengthOfMentors = 8;
 
     public DAOsql() throws IOException, SQLException{
         Properties prop = readProperties("src/main/resources/database.properties");
@@ -35,7 +32,6 @@ public abstract class DAOsql implements InterfaceDAO {
 
         mentors = new ArrayList<>();
         candidates = new ArrayList<>();
-        fillLists();
     }
 
     public static Properties readProperties(String path) throws IOException {
@@ -47,31 +43,6 @@ public abstract class DAOsql implements InterfaceDAO {
         props.load(bf);
 
         return props;
-    }
-
-    private void fillLists() throws SQLException {
-        Connection con = DriverManager.getConnection(url, user, password);
-        PreparedStatement pst = con.prepareStatement("SELECT * FROM applicants");
-        ResultSet rs = pst.executeQuery();
-
-        while (rs.next()) {
-            for(int index = 0; index < lengthOfCandidate;index++){
-                params[index] = rs.getString(index + 1);
-            }
-            candidates.add(new Candidate(params));
-        }
-
-        pst = con.prepareStatement("SELECT * FROM mentors");
-        rs = pst.executeQuery();
-
-        while (rs.next()) {
-            for(int index = 0; index < lengthOfMentors;){
-                params[index] = rs.getString(index + 1);
-                index++;
-            }
-            mentors.add(new Mentor(params));
-        }
-        con.close();
     }
 
 }

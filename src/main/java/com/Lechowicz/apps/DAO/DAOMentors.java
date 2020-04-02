@@ -5,15 +5,13 @@ import com.Lechowicz.apps.persons.Person;
 import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class DAOMentors extends DAOsql implements InterfaceDAO {
     public DAOMentors() throws IOException, SQLException {
         super();
+        fillList();
     }
 
     @Override
@@ -60,6 +58,24 @@ public class DAOMentors extends DAOsql implements InterfaceDAO {
         } catch (SQLException | FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    protected void fillList() throws SQLException {
+        int lengthOfMentors = 8;
+        String[] params = new String[lengthOfMentors];
+
+        Connection con = DriverManager.getConnection(url, user, password);
+        PreparedStatement pst = con.prepareStatement("SELECT * FROM mentors");
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            for(int index = 0; index < lengthOfMentors;){
+                params[index] = rs.getString(index + 1);
+                index++;
+            }
+            mentors.add(new Mentor(params));
+        }
+        con.close();
     }
 
     protected void updateDataBase() throws SQLException, FileNotFoundException {

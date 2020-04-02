@@ -5,15 +5,13 @@ import com.Lechowicz.apps.persons.Person;
 import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class DAOCandidates extends DAOsql implements InterfaceDAO {
     public DAOCandidates() throws IOException, SQLException {
         super();
+        fillList();
     }
 
 
@@ -68,6 +66,24 @@ public class DAOCandidates extends DAOsql implements InterfaceDAO {
         } catch (SQLException | FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    protected void fillList() throws SQLException {
+        int lengthOfCandidate = 6;
+        String[] params = new String[lengthOfCandidate];
+
+        Connection con = DriverManager.getConnection(url, user, password);
+        PreparedStatement pst = con.prepareStatement("SELECT * FROM applicants");
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            for(int index = 0; index < lengthOfCandidate;index++){
+                params[index] = rs.getString(index + 1);
+            }
+            candidates.add(new Candidate(params));
+        }
+
+        con.close();
     }
 
     protected void updateDataBase() throws SQLException, FileNotFoundException {
